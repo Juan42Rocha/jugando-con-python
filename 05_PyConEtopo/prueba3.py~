@@ -1,0 +1,7 @@
+from scipy import misc
+import pylab as pl
+
+1=misc.lena()
+misc.imsave('lena.png',1)
+
+p1.imshow(1)

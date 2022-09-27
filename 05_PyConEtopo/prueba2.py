@@ -1,0 +1,9 @@
+from __future__ import division
+#import Image
+import numpy as np
+import matplotlib.pyplot as plt
+
+I= Imagen.open("etopo1.tif")
+
+I.show()
+

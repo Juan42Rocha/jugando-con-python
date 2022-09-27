@@ -1,0 +1,3 @@
+import numpy as np
+
+a=np.reshape(np.arange(12)),3,4)

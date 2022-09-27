@@ -1,0 +1,71 @@
+import numpy as np
+import random as rd
+import os
+
+
+def mvleft(XX,x0,y0):
+    if(y0!=0):
+        inttemp=XX[x0][y0]
+        XX[x0][y0]=XX[x0][y0-1]
+        XX[x0][y0-1]=inttemp
+        y0=y0-1
+    return XX,x0,y0
+
+
+def mvrigth(XX,x0,y0):
+  
+    if(y0 !=XX[1].size-1):
+        inttemp=XX[x0][y0]
+        XX[x0][y0]=XX[x0][y0+1]
+        XX[x0][y0+1]=inttemp
+        y0=y0+1
+    return XX,x0,y0
+
+
+def mvup(XX,x0,y0):
+    if(x0!=0):
+        inttemp=XX[x0][y0]
+        XX[x0][y0]=XX[x0-1][y0]
+        XX[x0-1][y0]=inttemp
+        x0=x0-1
+    return XX,x0,y0
+
+
+def mvdown(XX,x0,y0):
+    if(x0!=XX[1].size-1):
+        inttemp=XX[x0][y0]
+        XX[x0][y0]=XX[x0+1][y0]
+        XX[x0+1][y0]=inttemp
+        x0=x0+1
+    return XX,x0,y0
+
+
+def mixer(XX,x0,y0):
+    icont=XX[1].size
+    for i in range(1):
+        intnumrand=rd.randint(1,4)
+        if(intnumrand==1):
+            [XX,x0,y0]=mvleft(XX,x0,y0)
+        elif(intnumrand==2):
+            [XX,x0,y0]=mvrigth(XX,x0,y0)
+        elif(intnumrand==3):
+            [XX,x0,y0]=mvup(XX,x0,y0)
+        else:
+            [XX,x0,y0]=mvdown(XX,x0,y0)
+    return XX,x0,y0       
+            
+
+def issolve(XX):
+    nfilas=XX[1].size
+     
+    solve=np.arange(1,nfilas**2+1)
+    solve[-1]=0
+    mallasolve=solve.reshape(nfilas,nfilas)
+
+    value1=(XX==mallasolve)
+    value2=(XX==mallasolve.transpose())
+    
+    if(value1.all() or value2.all()):
+       return False
+    else:  
+       return True

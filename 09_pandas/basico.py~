@@ -1,0 +1,7 @@
+import pandas as pdb
+
+# crea un data set simple
+
+data= {'Name':["Jhon","Anna","Peter","Linda"],
+       'Location':["EU","Paris","Berlin","London"]
+       'age':[24,23,12,33]}

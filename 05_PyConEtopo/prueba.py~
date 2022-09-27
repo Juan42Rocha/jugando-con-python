@@ -1,0 +1,6 @@
+
+
+archivo = open("etopo1.tif")
+contenido = archivo.read()
+
+archivo.seek(0)

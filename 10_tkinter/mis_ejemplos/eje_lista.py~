@@ -1,0 +1,124 @@
+from tkinter import *
+#from abc import ABCMeta, abstractmethod
+
+class Nodo:
+ #   __metaclas__=ABCMeta
+    
+    def __init__(self,value,ant=None,sig=None):
+        self.value=value
+        self.ant=ant
+        self.sig=sig
+
+    def agregarsig(self,sig):
+        self.sig=sig
+
+    def agregarant(self,ant):
+        self.ant=ant
+"""        
+        
+    def swapsig(self):
+        tmp=self.value
+        self.value=self.sig.value
+        self.sig.value=tmp
+        self.boton1.config(text=self.nodo1.value)
+        print(self.value,self.sig.value)
+        
+    
+
+    def swapant(self):
+        tmp=self.value
+        self.value=self.ant.value
+        self.ant.value=tmp    
+"""
+
+#------------------------
+
+class Juego():
+
+    def __init__(self):  
+        self.nodo1=Nodo(1)
+        self.nodo2=Nodo(2)
+        self.nodo3=Nodo(3)
+        #print(nodo1.value,nodo2.value,nodo3.value)
+        
+        self.nodo1.agregarsig(self.nodo2)
+        
+        self.nodo2.agregarant(self.nodo1)
+        self.nodo2.agregarsig(self.nodo3)
+
+        self.nodo3.agregarant(self.nodo2)
+
+        
+        self.root=Tk()
+        self.miFrame=Frame(self.root)
+        self.miFrame.pack()
+        
+
+
+        self.boton1=Button(self.miFrame,
+                           text=self.nodo1.value,width=3,height=2,
+                           command=lambda:self.swapsig(self.nodo1))
+        self.boton1.grid(row=2,column=1)
+
+        self.boton2=Button(self.miFrame,
+                           text=self.nodo2.value,width=3,height=2,
+                           command=lambda:self.swapant(self.nodo2))
+        self.boton2.grid(row=2,column=2)
+
+        self.boton3=Button(self.miFrame,
+                           text=self.nodo3.value,width=3,height=2,
+                           command=lambda:self.swapant(self.nodo3))
+        self.boton3.grid(row=2,column=3)
+
+        
+        self.root.mainloop()
+
+    def updatebotones(self):
+        self.boton1.config(text=self.nodo1.value)
+        self.boton2.config(text=self.nodo2.value) 
+        self.boton3.config(text=self.nodo3.value)
+        
+    def swapsig(self,n1):
+        tmp=n1.value
+        n1.value=n1.sig.value
+        n1.sig.value=tmp
+        self.updatebotones()
+     
+        
+    def swapant(self,n1):
+        tmp=n1.value
+        n1.value=n1.ant.value
+        n1.ant.value=tmp
+        self.updatebotones()
+        
+
+    
+
+        
+"""
+boton4=Button(miFrame,text=str(XX[1][0]),width=2,height=2)
+boton4.grid(row=3,column=1)
+
+boton5=Button(miFrame,text=str(XX[1][1]),width=3,height=2)
+boton5.grid(row=3,column=2)
+
+boton6=Button(miFrame,text=str(XX[1][2]),width=3,height=2)
+boton6.grid(row=3,column=3)
+
+
+boton7=Button(miFrame,text=str(XX[2][0]),width=3,height=2)
+boton7.grid(row=4,column=1)
+
+boton8=Button(miFrame,text=str(XX[2][1]),width=3,height=2)
+boton8.grid(row=4,column=2)
+
+boton0=Button(miFrame,text=str(XX[2][2]),width=3,height=2,command=mvrigth())
+boton0.grid(row=4,column=3)
+"""
+
+
+
+app=Juego()
+
+
+

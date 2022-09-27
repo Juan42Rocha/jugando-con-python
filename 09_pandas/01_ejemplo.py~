@@ -1,0 +1,10 @@
+from sklearn.datasets import load_iris
+iris_dataset = load_iris()
+
+
+print("Keys de iris_dataset",format(iris_dataset.keys() ) )
+
+print(iris_dataset['DESCR'][193:]+"\n...")
+
+
+print("Fuature names: \n{}", format(iris_dataset['feature_names']))
